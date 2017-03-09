@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 
+
 using namespace std;
 
 
@@ -16,16 +17,45 @@ int* dt;
 
 public:
 date(int d,int m,int a);
-void setDia(int d){dia=d;}
+void setDia(int d){dia=d;} //definindo metodo set
 void setMes(int m){mes=m;}
 void setAno(int a){ano=a;}
 
-int getDia() {return dia;}
+int getDia() {return dia;} //definindo metodo get
 int getMes() {return mes;}
 int getAno() {return ano;}
 
+void avancarDia(){ //metodo para avancar um dia no tempo
+int i=0;
+if((mes==2)&&(dia==28)){
+dia = 1;
+mes = 3;
+i++;
+}
+if(((mes==1)||(mes==3)||(mes==5)||(mes==7)||(mes==8)||(mes==10)||(mes==12))&&(dia==31)){
+dia = 1;
+mes = mes +1;
+i++;
+}
+if(((mes==4)||(mes==6)||(mes==9)||(mes==11))&&(dia==30)){
+dia = 1;
+mes = mes +1;
+i++;
+}
+if((mes==12)&&(dia==31)){
+dia = 1;
+mes = 1;
+ano = ano+1;
+i++;
+}
+if (i==0)
+dia = dia+1;
+}
+
 ~date();
 };
+
+
 
 
 
@@ -78,8 +108,21 @@ delete [] dt;
 //função principal
 
 int main(){
-date HJ(12,3,2017);
+int d,m,a, x;
+cout <<"digite dia mes e ano separado por espacos: ";
+cin >>d>>m>>a;
+date HJ(d,m,a);
 cout << "data: "<< HJ.getDia()<<" "<< HJ.getMes()<<" "<<HJ.getAno()<< endl;
+cout << "digite 1 para avancar a data e 0 para terminar: ";
+cin >> x;
+while (x!=0){
+    if (x=1){
+    HJ.avancarDia();
+    cout << "data: "<< HJ.getDia()<<" "<< HJ.getMes()<<" "<<HJ.getAno()<< endl;
+    cout << "digite 1 para avancar a data e 0 para terminar: "<<endl;
+    cin >> x;
+    }
+}
 }
 
 
