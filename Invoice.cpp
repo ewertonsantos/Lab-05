@@ -62,12 +62,9 @@ Invoice::Invoice(int n, int q, int p, string d){
 //FUNCAO PRINCIPAL
 
 int main(){
-    int codFatura = 20170571;
     cout <<" FATURA 1" << endl;
-    cout << "digite a quantidade do produto"<< endl;
-    Invoice fatura1;
-    fatura1.setNumero(10);
-    //fatura1.setQuantidade(20);
-    //fatura1.setQuantidade(cin >>;);
-    cout << "a quantidade eh: " << fatura1.getNumero();
-}
+    Invoice fatura1(2017,15,25,"prox-2125");
+    cout << "a compra numero: "<<fatura1.getNumero()<<"  Descricao: "<<fatura1.getDescricao()<< endl;
+    cout << "quantidade: "<<fatura1.getNumero()<<  endl <<"de valor: "<<fatura1.getPreco()<<endl;
+    cout << "tem valor total: "<<fatura1.getInvoiceAmount()<<endl;
+    }
